@@ -1,3 +1,12 @@
+import performanceImg from "@/../public/images/performance.jpg";
+import Hero from "@/components/hero";
+
 export default function PerformancePage() {
-  return <main className="min-h-screen p-24 text-3xl">Performance Page</main>;
+  return (
+    <Hero
+      imgData={performanceImg}
+      imgAlt="welding"
+      title="We serve high performance application"
+    />
+  );
 }

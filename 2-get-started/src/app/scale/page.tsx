@@ -1,3 +1,12 @@
+import scaleImg from "@/../public/images/scale.jpg";
+import Hero from "@/components/hero";
+
 export default function ScalePage() {
-  return <main className="min-h-screen p-24 text-3xl">Scale Page</main>;
+  return (
+    <Hero
+      imgData={scaleImg}
+      imgAlt="Steel factory"
+      title="Scale your app to infinity"
+    />
+  );
 }

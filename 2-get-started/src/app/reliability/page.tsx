@@ -1,3 +1,12 @@
+import reliabilityImg from "@/../public/images/reliability.jpg";
+import Hero from "@/components/hero";
+
 export default function ReliabilityPage() {
-  return <main className="min-h-screen p-24 text-3xl">Reliabilty Page</main>;
+  return (
+    <Hero
+      imgData={reliabilityImg}
+      imgAlt="Welding-2"
+      title="High reliability hosting"
+    />
+  );
 }
