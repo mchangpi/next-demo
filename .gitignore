@@ -41,3 +41,4 @@ package-lock.json
 *.sql
 *.db
 *.db-journal
+*.zip

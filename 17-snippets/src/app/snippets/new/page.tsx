@@ -3,10 +3,8 @@ import { db } from "@/db";
 
 export default function SnippetCreatePage() {
   async function createSnippet(formData: FormData) {
-    /* server action */
-    "use server";
+    "use server"; /* server action */
 
-    /* validate user inputs */
     const title = formData.get("title") as string;
     const code = formData.get("code") as string;
 
