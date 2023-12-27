@@ -5,7 +5,12 @@ interface ShowPageProps {
   params: { id: string };
 }
 
+const simNetworkDelay = (delay: number) =>
+  new Promise((resolved) => setTimeout(resolved, delay));
+
 export default async function SnippetShowPage({ params }: ShowPageProps) {
+  // await simNetworkDelay(2500);
+
   /* prisma syntax */
   const snippet = await db.snippet.findFirst({
     where: { id: Number(params.id) },
