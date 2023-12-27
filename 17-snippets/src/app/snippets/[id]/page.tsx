@@ -9,7 +9,7 @@ const simNetworkDelay = (delay: number) =>
   new Promise((resolved) => setTimeout(resolved, delay));
 
 export default async function SnippetShowPage({ params }: ShowPageProps) {
-  // await simNetworkDelay(2500);
+  await simNetworkDelay(2000);
 
   /* prisma syntax */
   const snippet = await db.snippet.findFirst({
