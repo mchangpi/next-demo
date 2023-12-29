@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { db } from "@/db";
+import * as serverActions from "@/actions";
 
 interface ShowPageProps {
   params: { id: string };
@@ -16,7 +17,12 @@ export default async function SnippetShowPage({ params }: ShowPageProps) {
   const snippet = await db.snippet.findFirst({
     where: { id: Number(params.id) },
   });
-  //   console.log(snippet);
+  // </form>  console.log(snippet);
+
+  const handleDeleteSnippetAction = serverActions.deleteSnippet.bind(
+    null,
+    snippet ? snippet.id : -1
+  );
 
   return snippet ? (
     <div>
@@ -29,7 +35,9 @@ export default async function SnippetShowPage({ params }: ShowPageProps) {
           >
             Edit
           </Link>
-          <button className="p-2 border rounded">Delete</button>
+          <form action={handleDeleteSnippetAction}>
+            <button className="p-2 border rounded">Delete</button>
+          </form>
         </div>
       </div>
       <pre className="p-3 border rounded bg-gray-200 border-gray-200">
