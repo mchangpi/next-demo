@@ -10,7 +10,7 @@ interface ShowPageProps {
 const simNetworkDelay = (delay: number) =>
   new Promise((resolved) => setTimeout(resolved, delay));
 
-export default async function SnippetShowPage({ params }: ShowPageProps) {
+export default async function ShowPage({ params }: ShowPageProps) {
   await simNetworkDelay(2000);
 
   /* prisma syntax */
@@ -47,4 +47,12 @@ export default async function SnippetShowPage({ params }: ShowPageProps) {
   ) : (
     notFound()
   );
+}
+
+export async function generateStaticParams() {
+  const snippets = await db.snippet.findMany();
+
+  return snippets.map((snippet) => {
+    id: snippet.id.toString();
+  });
 }
