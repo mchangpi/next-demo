@@ -7,13 +7,21 @@ export async function createSnippet(
   formState: { message: string },
   formData: FormData
 ) {
-  return { message: "Title must be longer" };
+  // return { message: "Title must be longer" };
 
-  const title = formData.get("title") as string;
-  const code = formData.get("code") as string;
+  const title = formData.get("title"); // as string;
+  const code = formData.get("code"); // as string;
+
+  if (typeof title !== "string" || title.length < 3) {
+    return { message: "Title must be longer" };
+  }
+  if (typeof code !== "string" || code.length < 10) {
+    return { message: "Code must be longer" };
+  }
 
   const snippet = await db.snippet.create({ data: { title, code } });
   console.log(snippet);
+
   redirect("/");
 }
 
