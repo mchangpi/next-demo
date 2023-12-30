@@ -1,5 +1,6 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { db } from "@/db";
 
@@ -30,6 +31,8 @@ export async function createSnippet(
       return { message: "Something went wrong" };
     }
   }
+
+  revalidatePath("/");
   redirect("/");
 }
 
@@ -44,5 +47,7 @@ export async function editSnippet(id: number, code: string) {
 export async function deleteSnippet(id: number) {
   console.log("delete snippet action", id);
   await db.snippet.delete({ where: { id } });
+
+  revalidatePath("/");
   redirect("/");
 }
