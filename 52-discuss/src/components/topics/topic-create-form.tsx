@@ -14,6 +14,8 @@ import * as actions from "@/actions";
 export default function TopicCreateForm() {
   const [formState, action] = useFormState(actions.createTopic, { errors: {} });
 
+  // console.log(formState);
+
   return (
     <Popover placement="left">
       <PopoverTrigger>
@@ -28,12 +30,16 @@ export default function TopicCreateForm() {
               label="Name"
               labelPlacement="outside"
               placeholder="Name"
+              isInvalid={!!formState.errors.name}
+              errorMessage={formState.errors.name?.join(", ")}
             />
             <Textarea
               name="description"
               label="Description"
               labelPlacement="outside"
               placeholder="Describe your topic"
+              isInvalid={!!formState.errors.name}
+              errorMessage={formState.errors.description?.join(", ")}
             />
             <Button type="submit">Submit</Button>
           </div>

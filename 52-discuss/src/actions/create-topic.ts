@@ -32,5 +32,5 @@ export async function createTopic(
     errors = result.error.flatten().fieldErrors;
     console.log(errors);
   }
-  return { errors: {} };
+  return { errors };
 }
