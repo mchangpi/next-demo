@@ -4,10 +4,13 @@ import { auth } from "@/auth";
 import Profile from "@/components/profile";
 
 export default async function Home() {
-  const session = await auth();
+  // const session = await auth();
 
+  return <div>Home Page</div>;
+}
+
+function validateSignInOut(session: any) {
   console.log("Sign in from Server Component: session", session);
-
   return (
     <div>
       <form action={actions.signIn}>
