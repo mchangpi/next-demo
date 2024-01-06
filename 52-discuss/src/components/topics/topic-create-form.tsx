@@ -1,7 +1,33 @@
-import React from "react";
+import {
+  Input,
+  Button,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  Textarea,
+} from "@nextui-org/react";
+import * as actions from "@/actions";
 
-type Props = {};
-
-export default function TopicCreateForm({}: Props) {
-  return <div>topic-create-form</div>;
+export default function TopicCreateForm() {
+  return (
+    <Popover placement="left">
+      <PopoverTrigger>
+        <Button color="primary">Create a Topic</Button>
+      </PopoverTrigger>
+      <PopoverContent>
+        <form action={actions.createTopic}>
+          <div className="flex flex-col gap-4 p-4 2-80">
+            <h3 className="text-lg">Create a Topic</h3>
+            <Input label="Name" labelPlacement="outside" placeholder="Name" />
+            <Textarea
+              label="Description"
+              labelPlacement="outside"
+              placeholder="Describe your topic"
+            />
+            <Button type="submit">Submit</Button>
+          </div>
+        </form>
+      </PopoverContent>
+    </Popover>
+  );
 }
