@@ -8,6 +8,7 @@ import { z } from "zod";
 import { auth } from "@/auth";
 import { db } from "@/db";
 import paths from "@/paths";
+import { resolve } from "path";
 
 const createTopicSchema = z.object({
   name: z
@@ -29,6 +30,8 @@ export async function createTopic(
   formState: CreateTopicFormState,
   formData: FormData
 ): Promise<CreateTopicFormState> {
+  /* await new Promise((resolve) => setTimeout(resolve, 2500)); */
+
   const name = formData.get("name");
   const description = formData.get("description");
 
