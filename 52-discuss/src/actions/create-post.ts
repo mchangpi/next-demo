@@ -30,6 +30,12 @@ export async function createPost(
     title: formData.get("title"),
     content: formData.get("content"),
   });
+
+  const session = await auth();
+  if (!session || !session.user) {
+    return { errors: { _form: ["You must sign in to do this"] } };
+  }
+
   if (!result.success) {
     return { errors: result.error.flatten().fieldErrors };
   }
