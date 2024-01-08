@@ -13,13 +13,16 @@ import * as actions from "@/actions";
 import FormButton from "@/components/common/form-button";
 
 export default function PostCreateForm() {
+  const [formState, createPostAction] = useFormState(actions.createPost, {
+    errors: {},
+  });
   return (
     <Popover>
       <PopoverTrigger>
         <Button color="primary">Create a Post</Button>
       </PopoverTrigger>
       <PopoverContent>
-        <form>
+        <form action={createPostAction}>
           <div className="flex flex-col gap-4 p-4 w-80">
             <h3 className="text-lg">Create a Post</h3>
             <Input
@@ -27,12 +30,16 @@ export default function PostCreateForm() {
               label="Title"
               labelPlacement="outside"
               placeholder="Title"
+              isInvalid={!!formState.errors.title}
+              errorMessage={formState.errors.title?.join(",")}
             />
-            <Input
+            <Textarea
               name="content"
               label="Content"
               labelPlacement="outside"
               placeholder="Content"
+              isInvalid={!!formState.errors.content}
+              errorMessage={formState.errors.content?.join(",")}
             />
 
             <FormButton>Create a Post</FormButton>
