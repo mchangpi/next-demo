@@ -4,6 +4,14 @@ import CommentList from "@/components/comments/comment-list";
 import CommentCreateForm from "@/components/comments/comment-create-form";
 import paths from "@/paths";
 
+import { fetchCommentsByPostId } from "@/db/queries/comments";
+
+/* // src/paths.ts
+  postShow(slug: string, postId: string) {
+    return `/topics/${slug}/posts/${postId}`;
+  },
+*/
+
 interface PostShowPageProps {
   params: {
     slug: string;
@@ -21,7 +29,7 @@ export default async function PostShowPage({ params }: PostShowPageProps) {
       </Link>
       <PostShow postId={postId} />
       <CommentCreateForm postId={postId} startOpen />
-      {/* <CommentList comments={comments} /> */}
+      <CommentList fetchData={() => fetchCommentsByPostId(postId)} />
     </div>
   );
 }
