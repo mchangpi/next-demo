@@ -1,12 +1,20 @@
 import type { Post } from "@prisma/client";
 import { db } from "@/db";
 
+/* // option 2
+export type PostWithData = Awaited<
+  ReturnType<typeof fetchPostsByTopicSlug>
+>[number]; */
+
+// option 1
 export type PostWithData = Post & {
   topic: { slug: string };
   user: { name: string | null };
   _count: { comments: number };
 };
 
+/* export function fetchPostsByTopicSlug(slug: string) { // option 2 */
+// option 1
 export function fetchPostsByTopicSlug(slug: string): Promise<PostWithData[]> {
   return db.post.findMany({
     where: { topic: { slug } },
