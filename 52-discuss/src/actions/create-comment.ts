@@ -10,6 +10,11 @@ const createCommentSchema = z.object({
   content: z.string().min(3),
 });
 
+interface CreateCommentFormProps {
+  postId: string;
+  parentId?: string;
+}
+
 interface CreateCommentFormState {
   errors: {
     content?: string[];
@@ -19,7 +24,7 @@ interface CreateCommentFormState {
 }
 
 export async function createComment(
-  { postId, parentId }: { postId: string; parentId?: string },
+  { postId, parentId }: CreateCommentFormProps,
   formState: CreateCommentFormState,
   formData: FormData
 ): Promise<CreateCommentFormState> {

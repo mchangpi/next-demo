@@ -24,6 +24,8 @@ export default function CommentCreateForm({
     { errors: {} }
   );
 
+  if (startOpen) console.log("startOpen", startOpen);
+
   useEffect(() => {
     if (formState.success) {
       ref.current?.reset();
