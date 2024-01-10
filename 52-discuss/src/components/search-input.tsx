@@ -1,7 +1,15 @@
+"use client";
+
 import { Input } from "@nextui-org/react";
+import { useSearchParams } from "next/navigation";
 
-type Props = {};
+/* type SearchInputProps = {
+  searchParams: { term: string };
+};*/
 
-export default function SearchInput({}: Props) {
-  return <Input />;
+export default function SearchInput() {
+  const searchParams = useSearchParams();
+  console.log(searchParams.get("term"));
+
+  return <Input defaultValue={searchParams.get("term") || ""} />;
 }
