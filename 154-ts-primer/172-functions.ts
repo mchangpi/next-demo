@@ -34,3 +34,26 @@ const throwErrorC = (message: string): void => {
   }
   console.log(message);
 };
+
+const todayWeather = {
+  date: new Date(),
+  weather: "sunny",
+};
+
+const logWeatherA = (forecast: { date: Date; weather: string }): void => {
+  console.log(forecast.date, forecast.weather);
+};
+
+// ES2015
+const logWeatherB = ({
+  date,
+  weather,
+}: {
+  date: Date;
+  weather: string;
+}): void => {
+  console.log(date, weather);
+};
+
+logWeatherA(todayWeather);
+logWeatherB(todayWeather);
