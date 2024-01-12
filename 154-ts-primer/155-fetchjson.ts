@@ -22,3 +22,8 @@ const logTodo = (id: number, title: string, completed: boolean) => {
     Completed: ${completed} 
   `);
 };
+
+/*
+Primitive Types: number, boolean, void, undefined, string, symbol, null
+Object Types: functions, arrays, classes, objects
+*/
