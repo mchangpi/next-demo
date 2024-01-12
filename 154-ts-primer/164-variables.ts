@@ -46,3 +46,12 @@ const json = '{"x": 10, "y": 20}';
 // const coordinates = JSON.parse(json); // return 'any' type
 const coordinates: { x: number; y: number } = JSON.parse(json);
 console.log(coordinates);
+
+// 2) When we declare a variable on one line, and initialize it later
+let words: string[] = ["red", "green", "blue"];
+// let foundWord; // 'any' type
+let foundWord: boolean = false;
+for (let [idx, word] of Object.entries(words)) {
+  console.log(idx, word);
+  if (word === "green") foundWord = true;
+}
