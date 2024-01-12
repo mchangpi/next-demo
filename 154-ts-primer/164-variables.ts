@@ -55,3 +55,13 @@ for (let [idx, word] of Object.entries(words)) {
   console.log(idx, word);
   if (word === "green") foundWord = true;
 }
+
+// 3) Variable whose type cannot be inferred correctly
+let numArr2 = [-10, -1, 12];
+// let numberaAboveZero = false;
+let numberaAboveZero: boolean | number = false;
+for (let num of numArr2) {
+  // console.log(num);
+  if (num > 0) numberaAboveZero = num;
+}
+console.log(numberaAboveZero, "is above 0");
